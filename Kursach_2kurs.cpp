@@ -6,7 +6,7 @@
 #include <limits.h>
 #include <locale.h>
 
-#define MAX_NODES 1000  // Максимальное количество вершин
+#define MAX_NODES 100  // Максимальное количество вершин
 
 int graph[MAX_NODES][MAX_NODES];  // Граф, представленный матрицей смежности
 int pairU[MAX_NODES], pairV[MAX_NODES];  // Массивы пар
@@ -79,8 +79,11 @@ int hopcroftKarp() {
 }
 
 int main() {
-    setlocale(LC_ALL, "RUS");
+   setlocale(LC_ALL, "RUS");
+   int cont = 1;
 
+    do
+    {
     // Ввод данных
     printf("Введите количество вершин в левой части графа: ");
     scanf("%d", &n);
@@ -98,7 +101,10 @@ int main() {
     int maxMatching = hopcroftKarp();
 
     // Вывод результата
-    printf("Размер наибольшего паросочетания: %d\n", maxMatching);
+    printf("Размер наибольшего паросочетания: %d\n\nЕщё раз?(1 - да, 0 - нет)", maxMatching);
 
+    // Повторить?
+    scanf("%d", &cont);
+    } while (cont == 1);
     return 0;
 }
